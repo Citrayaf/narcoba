@@ -15,6 +15,7 @@ import BasicElements from "./index-sections/BasicElements.js";
 import Navbars from "./index-sections/Navbars.js";
 import Tabs from "./index-sections/Tabs.js";
 import Tabs_afa from "./index-sections/Tabs_afa.js"
+import Pagi_afa from "./index-sections/Pagi_afa.js";
 import Pagination from "./index-sections/Pagination.js";
 import Notifications from "./index-sections/Notifications.js";
 import Typography from "./index-sections/Typography.js";
@@ -45,6 +46,10 @@ function Index() {
         <IndexHeader />
         <div className="main">
           <Tabs_afa />
+          <Tabs_afa />
+          <Tabs_afa />
+          <Tabs_afa />
+          <Pagi_afa />
           <Images />
           <BasicElements />
           <Navbars />
