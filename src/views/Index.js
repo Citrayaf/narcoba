@@ -50,7 +50,7 @@ function Index() {
           <Tabs_afa />
           <Tabs_afa />
           <Pagi_afa />
-          <Images />
+          {/* <Images />
           <BasicElements />
           <Navbars />
           <Tabs />
@@ -62,8 +62,9 @@ function Index() {
           <NucleoIcons />
           <CompleteExamples />
           <SignUp />
-          <Examples />
-          <Download />
+          <Examples /> */}
+          <Javascript />
+
         </div>
         <DarkFooter />
       </div>
