@@ -5,18 +5,39 @@ import { Card, CardBody, Form, FormInput } from "shards-react";
 import "react-quill/dist/quill.snow.css";
 import "../assets/quill.css";
 
-const Editor = (props) => (
 
+const Editor = () => {
+  const [vall, setVall] = React.useState({judl: '', isi: ''});
+
+  // sto ={
+  //   judl: '',
+  //   isi: ''
+  // };
+  const handleChange = name => event => {
+    setVall({...vall, [name]: event.target.value});
+  }
+  console.log(vall.judl)
+  
+  return(
   <Card small className="mb-3">
     <CardBody>
       <Form className="add-new-post">
-        <FormInput size="lg" className="mb-3" placeholder="Judul .." value={props.name} required="required" 
-          onChange={e => props.setName(e.target.value)}
-          />
-        <ReactQuill className="add-new-post__editor mb-1" placeholder="Tulis disini..." required="required" />
+        <FormInput size="lg" className="mb-3" placeholder="Judul .." required="required" 
+        name="judl"
+        onChange = {handleChange('judl')} 
+        value={vall.judl} 
+        />
+        <ReactQuill 
+        className="add-new-post__editor mb-1" 
+        placeholder="Tulis disini..." 
+        required="required"
+        name="isi"
+        onChange = {handleChange('isi')} 
+        value={vall.isi} 
+        />
       </Form>
     </CardBody>
   </Card>
-);
+)};
 
 export default Editor;

@@ -17,6 +17,8 @@ import {
   Col,
 } from "reactstrap";
 
+
+
 // core components
 import LandingPageHeader from "components/Headers/LandingPageHeader.js";
 import DefaultFooter from "components/Footers/DefaultFooter.js";
@@ -36,7 +38,7 @@ function LandingPage() {
   const [lastFocus, setLastFocus] = React.useState(false);
   const [disabled, setDisabled] = useState(false);
   const [modal1, setModal1] = React.useState(false);
-  const [name, setName] = useState('');
+  const [judul, setJudul] = useState('');
   var a = useState(false);
 
   function handleTogg() {
@@ -51,7 +53,7 @@ function LandingPage() {
     }
   }
 
-  
+  console.log(judul)
 
   React.useEffect(() => {
     document.body.classList.add("landing-page");
@@ -135,7 +137,8 @@ function LandingPage() {
                   ></Input>
                 </InputGroup>
                 <div className="textarea-container">
-                  <Editor name={name} />
+                  <Editor onChange={(value) => setJudul(value)} />
+                  
                 </div>
                 <div className="send-button">
                   <Button
