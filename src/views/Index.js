@@ -64,6 +64,7 @@ function Index() {
           <SignUp />
           <Examples /> */}
           <Javascript />
+          <Download />
 
         </div>
         <DarkFooter />

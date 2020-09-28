@@ -1,5 +1,6 @@
 import React,{useState} from "react";
 import WordLimit from 'react-word-limit';
+// import WordLimit_in from 'react-word-limit-in';
 
 
 // reactstrap components
