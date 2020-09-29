@@ -29,7 +29,7 @@ import Download from "../index-sections/Download.js";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Editor from "components/Editor.js";
 
-const par = {float: "right"};
+const par = {margintop: "0px", marginbottom: "1rem"};
 
 
 

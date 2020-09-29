@@ -16,8 +16,12 @@ const Editor = () => {
   const handleChange = name => event => {
     setVall({...vall, [name]: event.target.value});
   }
+  const handleChangehtml = html => event => {
+    setVall({...vall, [html]: event.target.innerHTML});
+  }
   console.log(vall.judl)
-  
+  console.log(vall.isi)
+
   return(
   <Card small className="mb-3">
     <CardBody>
@@ -32,7 +36,7 @@ const Editor = () => {
         placeholder="Tulis disini..." 
         required="required"
         name="isi"
-        onChange = {handleChange('isi')} 
+        onChange = {handleChangehtml('isi')} 
         value={vall.isi} 
         />
       </Form>
