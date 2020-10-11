@@ -63,6 +63,7 @@ function Index() {
           <CompleteExamples />
           <SignUp />
           <Examples /> */}
+          <Notifications />
           <Javascript />
           <Download />
 

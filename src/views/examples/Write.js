@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import WordLimiter from 'react-word-limit';
 
 import Switch from "react-bootstrap-switch";
 
@@ -15,6 +16,7 @@ import {
   ModalBody,
   Row,
   Col,
+  Alert,
 } from "reactstrap";
 
 
@@ -29,7 +31,7 @@ import Download from "../index-sections/Download.js";
 import IndexNavbar from "components/Navbars/IndexNavbar.js";
 import Editor from "components/Editor.js";
 
-const par = {margintop: "0px", marginbottom: "1rem"};
+const par = {margintop: "0px", marginbottom: "1rem", float: "right"};
 
 
 
@@ -38,22 +40,142 @@ function LandingPage() {
   const [lastFocus, setLastFocus] = React.useState(false);
   const [disabled, setDisabled] = useState(false);
   const [modal1, setModal1] = React.useState(false);
-  const [judul, setJudul] = useState('');
+  const [modal2, setModal2] = React.useState(false);
+  const [konteks, setKonteks] = React.useState({judl: '', isi: ''});
+  const [alert1, setAlert1] = React.useState(false);
+
   var a = useState(false);
+  var [b, setB] = React.useState(false);
+  var [user, setUser] = React.useState({nama: '', email: ''});
+  const [peri, setPeri] = React.useState('');
+  var cc = 0;
+  
 
   function handleTogg() {
     a = setDisabled(!disabled);
-    return a;
+    setB(!b);
+    return a,b;
   }
 
   function handleTextt(a) {
-    var s;
     if (a) {
-      return s=" ";
+      return user.nama='',user.email='';
+    }
+  }
+  const handleChange = name => event => {
+    setUser({...user, [name]: event.target.value});
+  }
+  
+  function checkModal(){
+    if (b === false) {
+      if (user.nama === ''){
+        setPeri('isi Nama!!')
+        cc= 1;
+        if (user.email === ''){
+          setPeri('isi Nama & Email!!')
+          cc= 1;
+          if (konteks.judl === ''){
+            setPeri('isi Nama, Email, & Judul!!')
+            cc= 1;
+            if (konteks.isi === '<p><br></p>' || konteks.isi === ''){
+              setPeri('isi Nama, Email, Judul, & Carita!!')
+              cc= 1;
+            }
+          }
+          else{
+            if (konteks.isi === '<p><br></p>' || konteks.isi === ''){
+              setPeri('isi Nama, Email, & Carita!!')
+              cc= 1;
+            }
+          }
+        }
+        else{
+          if (konteks.judl === ''){
+            setPeri('isi Nama & Judul!!')
+            cc= 1;
+            if (konteks.isi === '<p><br></p>' || konteks.isi === ''){
+              setPeri('isi Nama, Judul, & Carita!!')
+              cc= 1;
+            }
+          }
+          else{
+            if (konteks.isi === '<p><br></p>' || konteks.isi === ''){
+              setPeri('isi Nama & Carita!!')
+              cc= 1;
+            }            
+          }
+        }
+      }
+      else{
+        if (user.email === ''){
+          setPeri('isi Email!!')
+          cc= 1;
+          if (konteks.judl === ''){
+            setPeri('isi Email & Judul!!')
+            cc= 1;
+            if (konteks.isi === '<p><br></p>' || konteks.isi === ''){
+              setPeri('isi Email, Judul, & Isi!!')
+              cc= 1;
+            }
+          }
+          else{
+            if (konteks.isi === '<p><br></p>' || konteks.isi === ''){
+              setPeri('isi Email & Isi!!')
+              cc= 1;
+            }
+          }
+        }
+        else{
+          if (konteks.judl === ''){
+            setPeri('isi Judul!!')
+            cc= 1;
+            if (konteks.isi === '<p><br></p>' || konteks.isi === ''){
+              setPeri('isi Judul & Carita!!')
+              cc= 1;
+            }
+          }
+          else{
+            if (konteks.isi === '<p><br></p>' || konteks.isi === ''){
+              setPeri('isi Carita!!')
+              cc= 1;
+            }
+          }
+        }
+      }
+    }
+    else{
+      if (konteks.judl === ''){
+        setPeri('isi Judul!!')
+        cc= 1;
+        if (konteks.isi === '<p><br></p>' || konteks.isi === ''){
+          setPeri('isi Judul & Carita!!')
+          cc= 1;
+        }
+      }
+      else{
+        if (konteks.isi === '<p><br></p>' || konteks.isi === ''){
+          setPeri('isi Carita!!')
+          cc= 1;
+        }
+      }
+    }
+    if (cc === 1 ){
+      setModal1(true)
+    }
+    else{
+      setModal2(true)
     }
   }
 
-  console.log(judul)
+  var str = konteks.isi;
+  var countt = str.split(' ')
+
+  console.log(countt.filter(Boolean).length);
+
+  console.log(user)
+  console.log(a,b)
+  console.log(konteks)
+  console.log(peri)
 
   React.useEffect(() => {
     document.body.classList.add("landing-page");
@@ -71,10 +193,30 @@ function LandingPage() {
   return (
     <>
       <IndexNavbar />
-      <div className="wrapper">
+      <div className="wrapper" id = "bubu">
         <LandingPageHeader />
+        <div className="section section-notifications">
+          <Alert color="success" isOpen={alert1}>
+            <Container>
+              <div className="alert-icon">
+                <i className="now-ui-icons ui-2_like"></i>
+              </div>
+              <strong>Well done!</strong> You successfully read this important
+              alert message.
+              <button
+                type="button"
+                className="close"
+                onClick={() => setAlert1(false)}
+              >
+                <span aria-hidden="true">
+                  <i className="now-ui-icons ui-1_simple-remove"></i>
+                </span>
+              </button>
+            </Container>
+          </Alert>
+        </div>
         <div className="main">
-        <div className="section section-contact-us text-center">
+        <div className="section section-contact-us text-center" id="notif">
           <Container>
             <h2 className="title">Tulis Disini?</h2>
             <p className="description">Your story is very important to us.</p>
@@ -111,6 +253,7 @@ function LandingPage() {
                     onBlur={() => setFirstFocus(false)}
                     name = "nama"
                     id = "nama"
+                    onChange = {handleChange('nama')}
                     value = {handleTextt(disabled)}
                     disabled={disabled}
                   ></Input>
@@ -132,12 +275,13 @@ function LandingPage() {
                     onBlur={() => setLastFocus(false)}
                     name = "email"
                     id = "email"
+                    onChange = {handleChange('email')}
                     value = {handleTextt(disabled)}
                     disabled={disabled}
                   ></Input>
                 </InputGroup>
                 <div className="textarea-container">
-                  <Editor onChange={(value) => setJudul(value)} />
+                  <Editor kon={konteks} OnKon={setKonteks} />
                   
                 </div>
                 <div className="send-button">
@@ -147,7 +291,7 @@ function LandingPage() {
                     color="info"
                     href="#pablo"
                     // onClick={(e) => e.preventDefault()}
-                    onClick={() => setModal1(true)}
+                    onClick={() => checkModal()}
                     size="lg"
                   >
                     Send Message
@@ -161,18 +305,10 @@ function LandingPage() {
                       >
                         <i className="now-ui-icons ui-1_simple-remove"></i>
                       </button>
-                      <h4 className="title title-up">Modal title</h4>
+                      <h4 className="title title-up">Peringatan</h4>
                     </div>
                     <ModalBody>
-                      <p>
-                        Far far away, behind the word mountains, far from the
-                        countries Vokalia and Consonantia, there live the blind
-                        texts. Separated they live in Bookmarksgrove right at the
-                        coast of the Semantics, a large language ocean. A small
-                        river named Duden flows by their place and supplies it with
-                        the necessary regelialia. It is a paradisematic country, in
-                        which roasted parts of sentences fly into your mouth.
-                      </p>
+                      {peri}
                     </ModalBody>
                     <div className="modal-footer">
                       <Button
@@ -181,6 +317,43 @@ function LandingPage() {
                         onClick={() => setModal1(false)}
                       >
                         Close
+                      </Button>
+                    </div>
+                  </Modal>
+                  <Modal isOpen={modal2} toggle={() => setModal2(false)}>
+                    <div className="modal-header justify-content-center">
+                      <button
+                        className="close"
+                        type="button"
+                        onClick={() => setModal2(false)}
+                      >
+                        <i className="now-ui-icons ui-1_simple-remove"></i>
+                      </button>
+                      <h4 className="title title-up">Modal title</h4>
+                    </div>
+                    <ModalBody>
+                      <p>
+                      Anda yakin akan mengirim carita ini
+                      </p>
+                    </ModalBody>
+                    <div className="modal-footer">
+                      <Button color="default" type="button" 
+                      onClick={() => {
+                        setAlert1(true); 
+                        setModal2(false);
+                        document
+                        .getElementById("bubu")
+                        .scrollIntoView();
+                        } 
+                      }>
+                        Ya
+                      </Button>
+                      <Button
+                        color="danger"
+                        type="button"
+                        onClick={() => setModal2(false)}
+                        >
+                        Tidak
                       </Button>
                     </div>
                   </Modal>

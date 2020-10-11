@@ -1,7 +1,7 @@
 import React from "react";
 
 // reactstrap components
-import { Button, Container } from "reactstrap";
+import { Button, Container, Alert } from "reactstrap";
 
 // core components
 
@@ -33,7 +33,7 @@ function LandingPageHeader() {
         ></div>
         <div className="content-center">
           <Container>
-            <h1 className="title">This is our great company.</h1>
+            <h1 className="title">Share your story here.</h1>
             <div className="text-center">
               <Button
                 className="btn-icon btn-round"

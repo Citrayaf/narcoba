@@ -6,8 +6,7 @@ import "react-quill/dist/quill.snow.css";
 import "../assets/quill.css";
 
 
-const Editor = (props) => {
-  
+const Editor = ({ kon, OnKon }) => {
   
 
   const [vall, setVall] = React.useState({judl: '', isi: ''});
@@ -18,12 +17,21 @@ const Editor = (props) => {
   // };
   const handleChange = name => event => {
     setVall({...vall, [name]: event.target.value});
+    
   }
 
 
-  console.log(vall.judl)
-  console.log(vall.isi)
-  
+
+  const handleQuillEdit = (value) => {
+    setVall((vall) => {
+      return {
+        ...vall,
+        isi : value
+      }
+    })
+  }
+  kon = OnKon(vall);
+
 
   return(
   <Card small className="mb-3">
@@ -35,12 +43,13 @@ const Editor = (props) => {
         value={vall.judl} 
         />
         <ReactQuill 
+        defaultValue=''
         className="add-new-post__editor mb-1" 
         placeholder="Tulis disini..." 
         required="required"
         name="isi"
-        // onChange = {handleChange('isi')}
-        // value={vall.isi} 
+        onChange = {handleQuillEdit}
+        value={vall.isi} 
         />
       </Form>
     </CardBody>

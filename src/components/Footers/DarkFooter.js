@@ -12,26 +12,10 @@ function DarkFooter() {
           <ul>
             <li>
               <a
-                href="https://www.creative-tim.com?ref=nukr-dark-footer"
-                target="_blank"
-              >
-                Creative Tim
-              </a>
-            </li>
-            <li>
-              <a
                 href="http://presentation.creative-tim.com?ref=nukr-dark-footer"
                 target="_blank"
               >
                 About Us
-              </a>
-            </li>
-            <li>
-              <a
-                href="http://blog.creative-tim.com?ref=nukr-dark-footer"
-                target="_blank"
-              >
-                Blog
               </a>
             </li>
           </ul>
@@ -49,7 +33,7 @@ function DarkFooter() {
             href="https://www.creative-tim.com?ref=nukr-dark-footer"
             target="_blank"
           >
-            Creative Tim
+            Creative Tim and Narcoboy
           </a>
           .
         </div>
